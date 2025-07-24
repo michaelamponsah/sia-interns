@@ -13,14 +13,11 @@ def add_resource():
     to the RESOURCES list 
     """
     # Python concepts: Python Dictionaries, Lists
-    
-    # 1. Prompt the user for:
-    # title, category, total quantity
+    print("\n---Add Resource---\n")
     title = input("Enter title: ")
     category = input("Enter category: ")
     total_quantity = input("Enter total quantity: ")
     
-    # 2. Compose the new resource in a dictionary
     new_resource = {
         "id": 1,
         "title": title,
@@ -30,16 +27,19 @@ def add_resource():
         "borrowed_by": []
     }
     
-    # 3. Insert the newly created resource(the dictionary) into
-    # RESOURCES = []
     RESOURCES.append(new_resource)
     print(f"Resource '{title}' added successfully with ID {1}")
-    
+   
 def view_resources():
    """
    Displays all resources
    """
-   print("View resources")
+   print("ID    Title       Category        TOTAL QTY   AVAILABLE QTY       BORROWERS")
+   # We will have to iterate/loop over the dictionaries in the RESOURCES[]
+   for resource in RESOURCES:
+   # And on each iteration, we display the dictionary/reource details for that resource item
+       print(f"{resource["id"]}   {resource["title"]}       {resource["category"]}      {resource["total_quantity"]}    {resource["available_quantity"]}        {resource["borrowed_by"]}")
+   
     
 def borrow_resource():
     print("Borrow resource")
@@ -61,6 +61,7 @@ def search_resources():
 
 def menu():
     """Displays the main menu to the user"""
+    print("\n\n****RESOURCE MANAGEMENT SYSTEM****\n")
     print("1. Add New Resource")
     print("2. View All Resources")
     print("3. Search Resources")
@@ -78,7 +79,7 @@ def main():
         menu()
 
         # Get the user's choice
-        user_choice = input("Enter an option >> ")
+        user_choice = input("\nEnter an option >> ")
         
         # Process the user's choice
         if user_choice == "1":
